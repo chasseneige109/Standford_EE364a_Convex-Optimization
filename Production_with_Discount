@@ -1,0 +1,46 @@
+# Production with Discount Pricing
+
+# code
+import cvxpy as cp
+import numpy as np
+
+A = np.array([
+    [1, 2, 0, 1],
+    [0, 0, 3, 1],
+    [0, 3, 1, 1],
+    [2, 1, 2, 5],
+    [1, 0, 3, 2]
+], dtype = float)
+
+cmax = np.array([100, 100, 100, 100, 100], dtype = float)
+
+p = np.array([3, 2, 7, 6], dtype = float)
+pdisc = np.array([2, 1, 4, 2], dtype = float)
+q = np.array([4, 10, 5, 10], dtype = float)
+
+x = cp.Variable(4, nonneg = True)
+r = cp.Variable(4)
+
+constraints = [
+    A @ x <= cmax,
+    r <= cp.multiply(p, x),
+    r <= p * q + cp.multiply(pdisc, (x - q))
+]
+
+objectives = cp.Maximize(cp.sum(r))
+
+prob = cp.Problem(objectives, constraints)
+prob.solve()
+
+print("x =", x.value)
+print("r =", r.value)
+print("totr =", np.sum(r.value))
+print("avgPrice =", r.value / x.value)
+
+
+
+# result
+x = [ 4.         22.49999998 30.99999999  1.50000001]
+r = [ 12.          32.49999998 138.99999998   9.00000004]
+totr = 192.49999999308372
+avgPrice = [3.         1.44444444 4.48387097 6.        ]
