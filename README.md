@@ -6,13 +6,6 @@ for **EE364a: Convex Optimization I**, taught by **Stephen Boyd** at Stanford Un
 
 ---
 
-## ⚠️ Disclaimer
-
-* These solutions are **unofficial** and for **personal study only**.
-* For official solutions, instructors must request them from the authors.
-
----
-
 ## 🔗 References
 
 * [Stanford EE364a course website](https://web.stanford.edu/class/ee364a/)
