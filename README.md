@@ -4,7 +4,6 @@
 This repository contains my **personal solutions, notes, and Python (CVXPY) implementations**  
 for **EE364a: Convex Optimization I**, taught by **Stephen Boyd** at Stanford University.  
 
-Assignments include 'additional exercise' 
 ---
 
 ## 🔗 References
